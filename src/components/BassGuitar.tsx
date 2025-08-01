@@ -20,13 +20,7 @@ const BassGuitar = () => {
     audioContextRef.current = audioContext;
     
     return () => {
-      // Cleanup - use captured values
-      const oscillators = oscillatorsRef.current;
-      Object.values(oscillators).forEach(osc => {
-        if (osc) {
-          osc.stop();
-        }
-      });
+      // Cleanup - just close the audio context
       audioContext.close();
     };
   }, []);
@@ -64,6 +58,17 @@ const BassGuitar = () => {
     // Reset playing state after animation
     setTimeout(() => setIsPlaying(null), 1000);
   };
+
+  // Cleanup oscillators when component unmounts
+  useEffect(() => {
+    return () => {
+      Object.values(oscillatorsRef.current).forEach(osc => {
+        if (osc) {
+          osc.stop();
+        }
+      });
+    };
+  }, []);
 
   const handleStringClick = (note: string, frequency: number) => {
     playNote(note, frequency);
