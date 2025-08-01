@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const BassGuitar = () => {
   const [isPlaying, setIsPlaying] = useState<string | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
-  const oscillatorsRef = useRef<{ [key: string]: OscillatorNode | null }>({});
+  const activeOscillators = useRef<Set<OscillatorNode>>(new Set());
 
   // Bass guitar frequencies (E2, A2, D3, G3)
   const strings = [
@@ -20,18 +20,21 @@ const BassGuitar = () => {
     audioContextRef.current = audioContext;
     
     return () => {
-      // Cleanup - just close the audio context
+      // Cleanup - stop all active oscillators and close context
+      activeOscillators.current.forEach(osc => {
+        try {
+          osc.stop();
+        } catch (e) {
+          // Oscillator might already be stopped
+        }
+      });
+      activeOscillators.current.clear();
       audioContext.close();
     };
   }, []);
 
   const playNote = (note: string, frequency: number) => {
     if (!audioContextRef.current) return;
-
-    // Stop any existing oscillator for this note
-    if (oscillatorsRef.current[note]) {
-      oscillatorsRef.current[note]?.stop();
-    }
 
     // Create new oscillator
     const oscillator = audioContextRef.current.createOscillator();
@@ -49,26 +52,22 @@ const BassGuitar = () => {
     gainNode.gain.linearRampToValueAtTime(1.0, audioContextRef.current.currentTime + 0.01);
     gainNode.gain.exponentialRampToValueAtTime(0.1, audioContextRef.current.currentTime + 1.0);
 
+    // Track this oscillator
+    activeOscillators.current.add(oscillator);
+
     oscillator.start();
     oscillator.stop(audioContextRef.current.currentTime + 1.0);
 
-    oscillatorsRef.current[note] = oscillator;
+    // Remove from tracking when it stops
+    oscillator.onended = () => {
+      activeOscillators.current.delete(oscillator);
+    };
+
     setIsPlaying(note);
 
     // Reset playing state after animation
     setTimeout(() => setIsPlaying(null), 1000);
   };
-
-  // Cleanup oscillators when component unmounts
-  useEffect(() => {
-    return () => {
-      Object.values(oscillatorsRef.current).forEach(osc => {
-        if (osc) {
-          osc.stop();
-        }
-      });
-    };
-  }, []);
 
   const handleStringClick = (note: string, frequency: number) => {
     playNote(note, frequency);
