@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 // Import the flower image
 import flowerImage from './images/flower.jpg';
-import BassGuitar from './components/BassGuitar';
 
 export default function App() {
   const [displayedText, setDisplayedText] = useState("");
@@ -168,17 +167,7 @@ Click anywhere to see something that is also cool...`;
             </motion.div>
           )}
 
-          {/* Bass Guitar - inline below everything */}
-          {showFlowers && (
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 2 }}
-              className="mt-8"
-            >
-              <BassGuitar />
-            </motion.div>
-          )}
+
         </div>
       </div>
     </div>
