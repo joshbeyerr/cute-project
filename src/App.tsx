@@ -21,14 +21,14 @@ Hello (:
 Ever since we met, at Einsteins, I knew something was special about you;
 // A lovely day it was
 Our conversation flowed so smoothly and I felt so comfortable around you;
-Everything about it felt perfect and it was just one of those situations where I knew I would be being seeing a lot more of you;
+Everything about it felt perfect and it was just one of those situations where I knew I would be seeing a lot more of you;
 After that day I wanted to meet with you every day at the library;
 // Not at all to work, but because I needed to talk to you more, see your face, see your smile.
 We also had some moments early on that may have been weird but were really special to me and showed that even super early on we felt serious about each other;
 // Setting relationship boundaries outside taylor library, you calling me saying someone came up to you at the library and said fuck you, etc.
 I wont ramble on too much, but right from when we first met until now and onwards, you have been amazing and our connection has made me feel so happy;
 Since our library times I have continued to need to talk to you more, see your face and see your smile. Or else... ;
-I cherish and crave you more every day;
+I cherish and yearn for you more every day;
 Thank you for being so special and being you (:
 
 Click anywhere to see something that is also cool...`;
