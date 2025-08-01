@@ -9,12 +9,7 @@ export default function App() {
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showFlowers, setShowFlowers] = useState(false);
-  const [timeElapsed, setTimeElapsed] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
+  // Removed unused timer state since we replaced it with the flower image
 
   // Debug: Log the image path
   console.log("🔍 Trying to load flower image from src/images/flower.jpg");
@@ -61,24 +56,7 @@ Click anywhere to see something that is also cool...`;
     }
   }, [currentIndex, codeText]);
 
-  // Timer effect
-  useEffect(() => {
-    const updateTimer = () => {
-      const now = new Date();
-      const diff = now.getTime() - startDate.getTime();
-      
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      setTimeElapsed({ days, hours, minutes, seconds });
-    };
-
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
-    return () => clearInterval(interval);
-  }, [startDate]);
+  // Removed timer effect since we replaced it with the flower image
 
   const handleClick = () => {
     setShowFlowers(true);

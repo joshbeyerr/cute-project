@@ -20,7 +20,8 @@ const BassGuitar = () => {
     
     return () => {
       // Cleanup
-      Object.values(oscillatorsRef.current).forEach(osc => {
+      const oscillators = oscillatorsRef.current;
+      Object.values(oscillators).forEach(osc => {
         if (osc) {
           osc.stop();
         }
