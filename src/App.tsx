@@ -32,8 +32,7 @@ Thank you for being so special and being you (:
 
 Click anywhere to see something that is also cool...`;
 
-  // Set your actual relationship start date here
-  const startDate = useMemo(() => new Date('2023-01-15T18:30:00'), []); // Change this to your real date!
+  // Removed unused startDate since we replaced the timer with the flower image
 
   // Typewriter effect
   useEffect(() => {

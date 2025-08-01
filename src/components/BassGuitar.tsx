@@ -19,15 +19,17 @@ const BassGuitar = () => {
     audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
     
     return () => {
-      // Cleanup
-      const oscillators = oscillatorsRef.current;
-      Object.values(oscillators).forEach(osc => {
+      // Cleanup - capture current values
+      const currentOscillators = { ...oscillatorsRef.current };
+      const currentAudioContext = audioContextRef.current;
+      
+      Object.values(currentOscillators).forEach(osc => {
         if (osc) {
           osc.stop();
         }
       });
-      if (audioContextRef.current) {
-        audioContextRef.current.close();
+      if (currentAudioContext) {
+        currentAudioContext.close();
       }
     };
   }, []);
