@@ -15,7 +15,7 @@ export default function App() {
 
   const codeText = `/**
  * THE CODE OF LOVE
- * A smalll letter and website for my girlfriend Sanaah (: 
+ * A small letter and website for my girlfriend Sanaah (: 
  */
 Dear Sanaah,
 Hello (:
