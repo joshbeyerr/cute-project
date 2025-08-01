@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 
 export default function App() {
@@ -35,7 +35,7 @@ Baby, I will love you forever;
 Click anywhere to see something special...`;
 
   // Set your actual relationship start date here
-  const startDate = new Date('2023-01-15T18:30:00'); // Change this to your real date!
+  const startDate = useMemo(() => new Date('2023-01-15T18:30:00'), []); // Change this to your real date!
 
   // Typewriter effect
   useEffect(() => {
