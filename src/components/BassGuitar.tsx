@@ -21,6 +21,7 @@ const BassGuitar = () => {
     
     return () => {
       // Cleanup - stop all active oscillators and close context
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       activeOscillators.current.forEach(osc => {
         try {
           osc.stop();
