@@ -16,21 +16,18 @@ const BassGuitar = () => {
 
   useEffect(() => {
     // Initialize audio context
-    audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    audioContextRef.current = audioContext;
     
     return () => {
-      // Cleanup - capture current values
-      const currentOscillators = { ...oscillatorsRef.current };
-      const currentAudioContext = audioContextRef.current;
-      
-      Object.values(currentOscillators).forEach(osc => {
+      // Cleanup - use captured values
+      const oscillators = oscillatorsRef.current;
+      Object.values(oscillators).forEach(osc => {
         if (osc) {
           osc.stop();
         }
       });
-      if (currentAudioContext) {
-        currentAudioContext.close();
-      }
+      audioContext.close();
     };
   }, []);
 
