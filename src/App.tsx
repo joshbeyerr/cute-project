@@ -178,7 +178,7 @@ Click anywhere to see something special...`;
               className="absolute bottom-8 text-center"
             >
               <div className="text-pink-400 text-lg mb-2">
-                I LOVE YOU SO MUCH
+                I LOVE YOU SO MUCH changee
               </div>
               <div className="text-yellow-400 text-sm">
                 - Your Boyfriend ♥
