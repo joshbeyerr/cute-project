@@ -1,4 +1,5 @@
 # Sanaah Site - Love Story
+https://joshbeyerr.github.io/cute-project/
 
 A beautiful React TypeScript application that displays a love story through code with animations and a relationship timer.
 
